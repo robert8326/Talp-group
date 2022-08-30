@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="card">
+        <h5 class="card-header"><span class="text-primary">{{ blog.name }}</span></h5>
+        <div class="card-body">
+            <h5 class="card-title">Published: {{ blog.created }}</h5>
+            <li style="list-style: none"><span><b>Категории блока:</b>
+                        {% for category in blog.categories.all %}
+                            <a href="#">
+                                    {{ category.name }}
+                            </a>
+                        {% endfor %}
+                                </span>
+            </li>
+            <br>
+            <img src="{{blog.photo.url}}" width="100" height="100">
+            <p class="card-text">{{ blog.short_description }}</p>
+            <br>
+            <p class="card-text">{{ blog.description }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
