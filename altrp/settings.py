@@ -16,6 +16,10 @@ DEBUG = env.bool('DEBUG')
 
 ALLOWED_HOSTS = []
 
+MY_LIB = [
+    'django_admin_inline_paginator',
+]
+
 MY_APPS = [
     'blog.apps.BlogConfig'
 ]
@@ -27,7 +31,7 @@ INSTALLED_APPS = [
      'django.contrib.sessions',
      'django.contrib.messages',
      'django.contrib.staticfiles',
-] + MY_APPS
+] + MY_APPS + MY_LIB
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
