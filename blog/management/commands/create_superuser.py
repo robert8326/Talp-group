@@ -12,8 +12,10 @@ class Command(BaseCommand):
         parser.add_argument('password', type=str)
 
     def handle(self, *args, **kwargs):
-        User.objects.create_superuser(
-            username=kwargs.get('user_name'),
-            password=kwargs.get('password')
-        )
-        self.stdout.write(self.style.SUCCESS('Successfully create superuser "%s"'))
+        count = User.objects.all().count()
+        if count == 0:
+            User.objects.create_superuser(
+                username=kwargs.get('user_name'),
+                password=kwargs.get('password')
+            )
+            self.stdout.write(self.style.SUCCESS('Successfully create superuser "%s"'))
